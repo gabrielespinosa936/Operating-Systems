@@ -1,0 +1,51 @@
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/gabriel.espinosa936@csuci.edu/Desktop/matrixMult/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_3457a/fast"
+/usr/bin/make -f CMakeFiles/cmTC_3457a.dir/build.make CMakeFiles/cmTC_3457a.dir/build
+make[1]: Entering directory '/home/gabriel.espinosa936@csuci.edu/Desktop/matrixMult/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_3457a.dir/CheckSymbolExists.c.o
+/usr/bin/cc   -D_FILE_OFFSET_BITS=64    -std=gnu11 -o CMakeFiles/cmTC_3457a.dir/CheckSymbolExists.c.o   -c /home/gabriel.espinosa936@csuci.edu/Desktop/matrixMult/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_3457a
+/opt/clion-2018.3.3/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3457a.dir/link.txt --verbose=1
+/usr/bin/cc  -D_FILE_OFFSET_BITS=64     CMakeFiles/cmTC_3457a.dir/CheckSymbolExists.c.o  -o cmTC_3457a 
+/usr/bin/ld: CMakeFiles/cmTC_3457a.dir/CheckSymbolExists.c.o: in function `main':
+CheckSymbolExists.c:(.text+0x1b): undefined reference to `pthread_create'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_3457a.dir/build.make:87: cmTC_3457a] Error 1
+make[1]: Leaving directory '/home/gabriel.espinosa936@csuci.edu/Desktop/matrixMult/cmake-build-debug/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_3457a/fast] Error 2
+
+File /home/gabriel.espinosa936@csuci.edu/Desktop/matrixMult/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/gabriel.espinosa936@csuci.edu/Desktop/matrixMult/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_710ab/fast"
+/usr/bin/make -f CMakeFiles/cmTC_710ab.dir/build.make CMakeFiles/cmTC_710ab.dir/build
+make[1]: Entering directory '/home/gabriel.espinosa936@csuci.edu/Desktop/matrixMult/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_710ab.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -D_FILE_OFFSET_BITS=64 -DCHECK_FUNCTION_EXISTS=pthread_create   -std=gnu11 -o CMakeFiles/cmTC_710ab.dir/CheckFunctionExists.c.o   -c /opt/clion-2018.3.3/bin/cmake/linux/share/cmake-3.13/Modules/CheckFunctionExists.c
+Linking C executable cmTC_710ab
+/opt/clion-2018.3.3/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_710ab.dir/link.txt --verbose=1
+/usr/bin/cc  -D_FILE_OFFSET_BITS=64 -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_710ab.dir/CheckFunctionExists.c.o  -o cmTC_710ab -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_710ab.dir/build.make:87: cmTC_710ab] Error 1
+make[1]: Leaving directory '/home/gabriel.espinosa936@csuci.edu/Desktop/matrixMult/cmake-build-debug/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_710ab/fast] Error 2
+
+

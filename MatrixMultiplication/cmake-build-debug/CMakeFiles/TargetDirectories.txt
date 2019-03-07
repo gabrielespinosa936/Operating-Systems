@@ -1,0 +1,3 @@
+/home/gabriel.espinosa936@csuci.edu/Desktop/matrixMult/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/gabriel.espinosa936@csuci.edu/Desktop/matrixMult/cmake-build-debug/CMakeFiles/matrixMult.dir
+/home/gabriel.espinosa936@csuci.edu/Desktop/matrixMult/cmake-build-debug/CMakeFiles/edit_cache.dir

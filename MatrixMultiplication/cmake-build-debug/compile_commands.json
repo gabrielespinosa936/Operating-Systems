@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/gabriel.espinosa936@csuci.edu/Desktop/matrixMult/cmake-build-debug",
+  "command": "/usr/bin/cc    -D_FILE_OFFSET_BITS=64 -g -Wall --pedantic -g -O0 -D_DEBUG   -std=gnu11 -o CMakeFiles/matrixMult.dir/matrixMult.c.o   -c /home/gabriel.espinosa936@csuci.edu/Desktop/matrixMult/matrixMult.c",
+  "file": "/home/gabriel.espinosa936@csuci.edu/Desktop/matrixMult/matrixMult.c"
+}
+]

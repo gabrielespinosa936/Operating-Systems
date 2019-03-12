@@ -1,3 +1,9 @@
+/*
+ * Gabriel Espinosa
+ * Lab/Task: Lab 7
+ * March 11, 2019
+ */
+
 #ifndef __BANK_H_
 #define __BANK_H_
 

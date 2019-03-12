@@ -1,3 +1,9 @@
+/*
+ * Gabriel Espinosa
+ * Lab/Task: Lab 7
+ * March 11, 2019
+ */
+
 #include "bank.h"
 
 int numOfCustomers;        // the number of customers of the bank
@@ -105,7 +111,12 @@ void displayBankState()
 bool solvencyTest(int customerNum, double *request)
 {
     // TODO implement
-    return true; // TODO: modify as appropriate
+
+
+
+    return (lessOrSame(request,maximum[customerNum],
+            customerNum)&& lessOrSame(need[customerNum],
+                    available,numOfAccounts)); // TODO: modify as appropriate
 }
 
 /***
@@ -115,8 +126,18 @@ bool solvencyTest(int customerNum, double *request)
 bool borrow(int customerNum, double funds[])
 {
     bool ret = solvencyTest(customerNum, funds);
+    //printf("MAYBE!!!");
 
     // TODO: complete
+    if(ret)
+    {
+        sub(available, funds, numOfAccounts);
+        add(allocation[customerNum], funds, numOfAccounts);
+        sub2(need[customerNum], maximum[customerNum], allocation[customerNum],numOfAccounts);
+        //printf("HEYYYYYY");
+
+    }        //printf("SURE!!!");
+
 
     return ret;
 }
@@ -129,6 +150,16 @@ bool repay(int customerNum, double funds[])
     bool ret = lessOrSame(funds, allocation[customerNum], numOfAccounts);
 
     // TODO: complete
+    //printf("NO!!!");
+
+    if(ret)
+    {
+        add(available, funds, numOfAccounts);
+        sub(allocation[customerNum], funds, numOfAccounts);
+        sub2(need[customerNum],maximum[customerNum], allocation[customerNum],numOfAccounts);
+        //printf("HOWDY!!!");
+    }        //printf("YESSSS!!!");
+
 
     return ret;
 }

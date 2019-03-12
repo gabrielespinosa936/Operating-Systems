@@ -1,3 +1,9 @@
+/*
+ * Gabriel Espinosa
+ * Lab/Task: Lab 7
+ * March 11, 2019
+ */
+
 #include "bank.h"
 
 int main(int argc, char *argv[])

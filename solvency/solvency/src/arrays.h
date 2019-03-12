@@ -1,3 +1,9 @@
+/*
+ * Gabriel Espinosa
+ * Lab/Task: Lab 7
+ * March 11, 2019
+ */
+
 #ifndef __ARRAYS_H_
 #define __ARRAYS_H_
 

@@ -11,9 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d12b36a9-73c6-4615-ae8a-1f7ec24516f4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/philoBase.c" beforeDir="false" afterPath="$PROJECT_DIR$/philoBase.c" afterDir="false" />
-    </list>
+    <list default="true" id="d12b36a9-73c6-4615-ae8a-1f7ec24516f4" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -57,7 +55,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -69,11 +66,12 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../solvency" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../solvency" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -111,16 +109,17 @@
       <workItem from="1551762786154" duration="3366000" />
       <workItem from="1551766234243" duration="672000" />
       <workItem from="1551981480351" duration="23000" />
+      <workItem from="1552356363692" duration="32000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4350000" />
+    <option name="totallyTimeSpent" value="4382000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="27" width="927" height="1053" extended-state="4" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3581921" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.36610168" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />

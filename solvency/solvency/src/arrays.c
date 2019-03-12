@@ -1,3 +1,9 @@
+/*
+ * Gabriel Espinosa
+ * Lab/Task: Lab 7
+ * March 11, 2019
+ */
+
 #include "arrays.h"
 
 void arraycpy(double to[], double from[], int num)

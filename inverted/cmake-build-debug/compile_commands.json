@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/gabe/Desktop/Operating Systems/inverted/cmake-build-debug",
+  "command": "/usr/bin/cc    -D_FILE_OFFSET_BITS=64 -g -Wall --pedantic -g -O0 -D_DEBUG   -std=gnu11 -o CMakeFiles/inverted.dir/inverted.c.o   -c \"/home/gabe/Desktop/Operating Systems/inverted/inverted.c\"",
+  "file": "/home/gabe/Desktop/Operating Systems/inverted/inverted.c"
+},
+{
+  "directory": "/home/gabe/Desktop/Operating Systems/inverted/cmake-build-debug",
+  "command": "/usr/bin/cc    -D_FILE_OFFSET_BITS=64 -g -Wall --pedantic -g -O0 -D_DEBUG   -std=gnu11 -o CMakeFiles/inverted.dir/testInverted.c.o   -c \"/home/gabe/Desktop/Operating Systems/inverted/testInverted.c\"",
+  "file": "/home/gabe/Desktop/Operating Systems/inverted/testInverted.c"
+}
+]

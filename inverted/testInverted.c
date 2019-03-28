@@ -1,3 +1,9 @@
+/*
+ * Gabriel Espinosa
+ * Lab/Task: Lab 8
+ * 03/25/2019
+ */
+
 #include "inverted.h"
 
 PROC *table;

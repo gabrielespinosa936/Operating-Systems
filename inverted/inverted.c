@@ -1,3 +1,9 @@
+/*
+ * Gabriel Espinosa
+ * Lab/Task: Lab 8
+ * 03/25/2019
+ */
+
 #include "inverted.h"
 
 // "hidden" symbols (i.e., not included in the .h file)
@@ -15,6 +21,11 @@ int findOldest(PROC *table);
 void initInverted(PROC **table, int msize, int fsize)
 {
     // TODO: implement
+//    this.tableSize = msize;
+//    this.frameSize = fsize;
+    tableSize = msize;
+    frameSize = fsize;
+    *table = calloc((size_t)tableSize, sizeof(PROC));
 }
 
 
@@ -26,6 +37,17 @@ void initInverted(PROC **table, int msize, int fsize)
 long translate(PROC *table, int pid, int page, int offset)
 {
     // TODO: implement
+
+    long entryLocation = lookUp(table,pid,page);
+    if(entryLocation != -1)
+    {
+        table[entryLocation].timeStamp = time(NULL);
+    }else {
+        entryLocation = findOldest(table);
+        table[entryLocation].pid = pid;
+        table[entryLocation].page = page;
+    }
+    return entryLocation+offset;
 }
 
 //
@@ -34,6 +56,13 @@ long translate(PROC *table, int pid, int page, int offset)
 int lookUp(PROC *table, int pid, int page)
 {
     // TODO: implement
+    for(int i = 0; i < tableSize; i++)
+    {
+        if(table[i].pid == pid && table[i].page == page)
+        {
+            return i;
+        }
+    }
 }
 
 //
@@ -42,4 +71,12 @@ int lookUp(PROC *table, int pid, int page)
 int findOldest(PROC *table)
 {
     // TODO: implement
+
+    int oldestEntry = 0;
+    for(int i = 0; i < tableSize;i++ )
+    {
+        if(table[i].timeStamp < table[oldestEntry].timeStamp)
+            oldestEntry = i;
+    }
+    return oldestEntry;
 }

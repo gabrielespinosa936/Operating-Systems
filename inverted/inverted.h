@@ -1,3 +1,8 @@
+/*
+ * Gabriel Espinosa
+ * Lab/Task: Lab 8
+ * 03/25/2019
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>

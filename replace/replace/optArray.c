@@ -20,9 +20,17 @@ int optNumOfFaults = 0;
 // this is the sequence of pages to serve
 int currentIndex;
 
-int testOPT(int numOfpages, int *refString, int refStrLen)
+int testOPT(int amountOfPages, int *refString, int refStrLen)
 {
     // TODO: implement
+    pageTable = malloc(sizeof(amountOfPages));
+    refStringLength = refStrLen;
+    referenceString = refString;
+    numOfpages = amountOfPages;
+    for(int i = 0; i < numOfpages; i++ )
+    {
+        pageTable[i] = FREE_SLOT;
+    }
 
     return optNumOfFaults;
 }
@@ -44,21 +52,50 @@ int searchOPT(int pageNumber)
 {
     // TODO: implement
 
+    for(int i = 0; i < refStringLength; i++)
+    {
+        if(pageTable[i] == FREE_SLOT || pageTable[i] == pageNumber
+         || pageTable[i] == findVictimPageOPT())
+        {
+            return i;
+        }
+    }
+
     return findVictimPageOPT();
 }
 
 int findVictimPageOPT()
 {
     // TODO: implement
+    // Future
+    int furthestAway = currentIndex;
+    for(int i = 0; i < refStringLength; i++)
+    {
+        if(referenceString[victimIndex] < furthestAway )
+            return i;
+    }
     return 0;
 }
 
 void displayOPT()
 {
-    // todo: implement
+    // TODO: implement
+    FRAME frameTable;
+    while(frameTable.pageNumber != NULL)
+    {
+        printf("********** %d ", frameTable);
+    }
+
 }
 
 void freePageTableOPT()
 {
     // TODO: implement
+
+//    while(pageTable != NULL)
+//    {
+//
+//    }
+
+
 }

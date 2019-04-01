@@ -31,7 +31,11 @@ int testLRU(int numOfFrames, int *refString, int refStrLen)
  */
 void insertLRU(int pageNumber)
 {
-    // TODO: implement
+    // TODO: implement.
+
+   FRAME *searchVal = searchLRU(pageNumber);
+   
+
 }
 
 /**
@@ -42,6 +46,7 @@ void insertLRU(int pageNumber)
 FRAME *searchLRU(int pageNumber)
 {
     // TODO: implement
+
 
     return NULL;
 }

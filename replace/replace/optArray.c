@@ -30,6 +30,8 @@ int testOPT(int amountOfPages, int *refString, int refStrLen)
     for(int i = 0; i < numOfpages; i++ )
     {
         pageTable[i] = FREE_SLOT;
+        hitIndex = hitIndex+1;
+        optNumOfFaults++;
     }
 
     return optNumOfFaults;
@@ -52,10 +54,9 @@ int searchOPT(int pageNumber)
 {
     // TODO: implement
 
-    for(int i = 0; i < refStringLength; i++)
+    for(int i = 0; i < pageNumber; i++)
     {
-        if(pageTable[i] == FREE_SLOT || pageTable[i] == pageNumber
-         || pageTable[i] == findVictimPageOPT())
+        if(pageTable[i] == FREE_SLOT )
         {
             return i;
         }
@@ -96,6 +97,8 @@ void freePageTableOPT()
 //    {
 //
 //    }
+
+    free(pageTable);
 
 
 }

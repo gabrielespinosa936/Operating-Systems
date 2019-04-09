@@ -1,7 +1,11 @@
 /*
  *  replace.h
  */
-
+/*
+ * Gabriel Espinosa
+ * Lab/Task: Lab 09
+ * April 1, 2019
+ */
 #ifndef __REPLACE_H
 #define __REPLACE_H
 

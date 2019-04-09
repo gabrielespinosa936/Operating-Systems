@@ -1,0 +1,80 @@
+/*
+ * Gabriel Espinosa
+ * Lab/Task: Lab 09
+ * April 1, 2019
+ */
+
+Script started on 2019-04-01 23:18:55-07:00
+Array.cblruList.c:-oDreplaceOperating Systems/replace/replace$ gccereplace.c0optA
+lruList.c: In function ‘insertLRU’:
+lruList.c:56:17: warning: assignment to ‘FRAME *’ {aka ‘struct frame *’} from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+    pageTableTop = searchVal->pageNumber;
+		 ^
+gabe@gabe-MS-7A74:~/Desktop/Operating Systems/replace/replace$ ./replacec4.20o8tA
+
+
+USING MEMORY WITH 4 FRAMES
+REFERENCE STRING: 6 6 2 2 3 7 3 2 6 7 3 5 2 0 7 8 2 3 2 6
+
+TESTING LRU
+
+Number of page faults using LRU: 0
+
+TESTING OPT
+6 ->	6 *	-1	-1	-1
+6 ->	6 *	6 *	-1	-1
+2 ->	6	2 *	-1	-1
+2 ->	6	2 *	-1	-1
+3 ->	6	2	3 *	-1
+7 ->	6	2	3	7 *
+3 ->	6	2	3 *	3 *
+2 ->	6	2 *	3	2 *
+6 ->	6 *	2	3	6 *
+7 ->	6	2	3	7 *
+3 ->	6	2	3 *	3 *
+5 ->	6	2	3	5 *
+2 ->	6	2 *	3	2 *
+0 ->	6	2	3	0 *
+7 ->	6	2	3	7 *
+8 ->	6	2	3	8 *
+2 ->	6	2 *	3	2 *
+3 ->	6	2	3 *	3 *
+2 ->	6	2 *	3	2 *
+6 ->	6 *	2	3	6 *
+
+Number of page faults using OPT: 16.
+
+Quality Ratio LRU vs. OPT: 0.00
+gabe@gabe-MS-7A74:~/Desktop/Operating Systems/replace/replace$ ./replace 2 15 4
+
+USING MEMORY WITH 2 FRAMES
+REFERENCE STRING: 1 1 0 0 3 2 3 4 4 2 1 4 0 2 0
+
+TESTING LRU
+
+Number of page faults using LRU: 0
+
+TESTING OPT
+1 ->	1 *	-1
+1 ->	1 *	-1
+0 ->	0 *	-1
+0 ->	0 *	-1
+3 ->	0	3 *
+2 ->	0	2 *
+3 ->	0	3 *
+4 ->	0	4 *
+4 ->	0	4 *
+2 ->	0	2 *
+1 ->	0	1 *
+4 ->	0	4 *
+0 ->	0 *	0 *
+2 ->	0	2 *
+0 ->	0 *	0 *
+
+Number of page faults using OPT: 13.
+
+Quality Ratio LRU vs. OPT: 0.00
+gabe@gabe-MS-7A74:~/Desktop/Operating Systems/replace/replace$ exit
+exit
+
+Script done on 2019-04-01 23:19:34-07:00

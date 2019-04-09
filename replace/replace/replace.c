@@ -1,4 +1,10 @@
 /*
+ * Gabriel Espinosa
+ * Lab/Task: Lab 09
+ * April 1, 2019
+ */
+
+/*
  *  replace.c
  *
  *  generates random sequence of page references that are fed into LRU and OPT algorithm to obtain

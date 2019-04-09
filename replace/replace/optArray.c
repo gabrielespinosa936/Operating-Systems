@@ -1,3 +1,9 @@
+/*
+ * Gabriel Espinosa
+ * Lab/Task: Lab 09
+ * April 1, 2019
+ */
+
 /**
  * This implements the LRU page-replacement algorithm.
  */
@@ -23,15 +29,22 @@ int currentIndex;
 int testOPT(int amountOfPages, int *refString, int refStrLen)
 {
     // TODO: implement
-    pageTable = malloc(sizeof(amountOfPages));
+    numOfpages = amountOfPages;
+
     refStringLength = refStrLen;
     referenceString = refString;
-    numOfpages = amountOfPages;
+    pageTable = (int* )malloc(numOfpages * sizeof(int));
     for(int i = 0; i < numOfpages; i++ )
     {
         pageTable[i] = FREE_SLOT;
-        hitIndex = hitIndex+1;
-        optNumOfFaults++;
+    }//printf("HEYYY");
+
+    for(int i = 0; i < refStringLength;i++)
+    {
+        currentIndex = i;
+        insertOPT(referenceString[currentIndex]);
+        hitIndex = -1;
+        displayOPT();
     }
 
     return optNumOfFaults;
@@ -43,7 +56,6 @@ int testOPT(int amountOfPages, int *refString, int refStrLen)
 void insertOPT(int pageNumber)
 {
     int searchVal = searchOPT(pageNumber);
-
     pageTable[searchVal] = pageNumber;
 }
 
@@ -70,22 +82,35 @@ int findVictimPageOPT()
     // TODO: implement
     // Future
     int furthestAway = currentIndex;
-    for(int i = 0; i < refStringLength; i++)
+    for(int i = 0; i < numOfpages; i++)
     {
-        if(referenceString[victimIndex] < furthestAway )
-            return i;
-    }
-    return 0;
+        for(int j = 0; j < refStringLength; j++)
+        {
+            if(pageTable[i] == referenceString[j]) {
+                victimIndex = i;
+                //optNumOfFaults++;
+            }
+        }
+    }optNumOfFaults++;
+    return victimIndex;
 }
 
 void displayOPT()
 {
     // TODO: implement
-    FRAME frameTable;
-    while(frameTable.pageNumber != NULL)
+
+    printf("%d ->\t", referenceString[currentIndex]);
+    for(int i = 0; i < numOfpages; i++)
     {
-        printf("********** %d ", frameTable);
-    }
+        printf("%d ", pageTable[i]);
+        if(i==hitIndex)
+            printf("<");
+        if(i!=hitIndex &&  pageTable[i]== referenceString[currentIndex])
+            printf("*");
+        printf("\t");
+
+    }printf("\n");
+
 
 }
 
@@ -93,10 +118,6 @@ void freePageTableOPT()
 {
     // TODO: implement
 
-//    while(pageTable != NULL)
-//    {
-//
-//    }
 
     free(pageTable);
 

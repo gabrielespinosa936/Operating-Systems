@@ -1,0 +1,84 @@
+/*
+ * Gabriel Espinosa
+ * Lab/Task: Lab 09
+ * April 1, 2019
+ */
+
+Script started on 2019-04-01 23:18:55-07:00
+]0;gabe@gabe-MS-7A74: ~/Desktop/Operating Systems/replace/replace[01;32mgabe@gabe-MS-7A74[00m:[01;34m~/Desktop/Operating Systems/replace/replace[00m$ ./replace 4 20 8gcc replace.c optA
+Array.c lruList.c -o replace
+[01m[KlruList.c:[m[K In function ‘[01m[KinsertLRU[m[K’:
+[01m[KlruList.c:56:17:[m[K [01;35m[Kwarning: [m[Kassignment to ‘[01m[KFRAME *[m[K’ {aka ‘[01m[Kstruct frame *[m[K’} from ‘[01m[Kint[m[K’ makes pointer from integer without a cast [[01;35m[K-Wint-conversion[m[K]
+    pageTableTop [01;35m[K=[m[K searchVal->pageNumber;
+                 [01;35m[K^[m[K
+]0;gabe@gabe-MS-7A74: ~/Desktop/Operating Systems/replace/replace[01;32mgabe@gabe-MS-7A74[00m:[01;34m~/Desktop/Operating Systems/replace/replace[00m$ gcc replace.c optA
+Array.c lruList.c -o replace[A
+]0;gabe@gabe-MS-7A74: ~/Desktop/Operating Systems/replace/replace[01;32mgabe@gabe-MS-7A74[00m:[01;34m~/Desktop/Operating Systems/replace/replace[00m$ [1P./replace 4 20 8
+
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+
+USING MEMORY WITH 4 FRAMES
+REFERENCE STRING: 6 6 2 2 3 7 3 2 6 7 3 5 2 0 7 8 2 3 2 6 
+
+TESTING LRU
+
+Number of page faults using LRU: 0
+
+TESTING OPT
+6 ->	6 *	-1 	-1 	-1 	
+6 ->	6 *	6 *	-1 	-1 	
+2 ->	6 	2 *	-1 	-1 	
+2 ->	6 	2 *	-1 	-1 	
+3 ->	6 	2 	3 *	-1 	
+7 ->	6 	2 	3 	7 *	
+3 ->	6 	2 	3 *	3 *	
+2 ->	6 	2 *	3 	2 *	
+6 ->	6 *	2 	3 	6 *	
+7 ->	6 	2 	3 	7 *	
+3 ->	6 	2 	3 *	3 *	
+5 ->	6 	2 	3 	5 *	
+2 ->	6 	2 *	3 	2 *	
+0 ->	6 	2 	3 	0 *	
+7 ->	6 	2 	3 	7 *	
+8 ->	6 	2 	3 	8 *	
+2 ->	6 	2 *	3 	2 *	
+3 ->	6 	2 	3 *	3 *	
+2 ->	6 	2 *	3 	2 *	
+6 ->	6 *	2 	3 	6 *	
+
+Number of page faults using OPT: 16.
+
+Quality Ratio LRU vs. OPT: 0.00
+]0;gabe@gabe-MS-7A74: ~/Desktop/Operating Systems/replace/replace[01;32mgabe@gabe-MS-7A74[00m:[01;34m~/Desktop/Operating Systems/replace/replace[00m$ ./replace 4 20 8[K[K[K[K[K[K[K 2 15 4
+
+USING MEMORY WITH 2 FRAMES
+REFERENCE STRING: 1 1 0 0 3 2 3 4 4 2 1 4 0 2 0 
+
+TESTING LRU
+
+Number of page faults using LRU: 0
+
+TESTING OPT
+1 ->	1 *	-1 	
+1 ->	1 *	-1 	
+0 ->	0 *	-1 	
+0 ->	0 *	-1 	
+3 ->	0 	3 *	
+2 ->	0 	2 *	
+3 ->	0 	3 *	
+4 ->	0 	4 *	
+4 ->	0 	4 *	
+2 ->	0 	2 *	
+1 ->	0 	1 *	
+4 ->	0 	4 *	
+0 ->	0 *	0 *	
+2 ->	0 	2 *	
+0 ->	0 *	0 *	
+
+Number of page faults using OPT: 13.
+
+Quality Ratio LRU vs. OPT: 0.00
+]0;gabe@gabe-MS-7A74: ~/Desktop/Operating Systems/replace/replace[01;32mgabe@gabe-MS-7A74[00m:[01;34m~/Desktop/Operating Systems/replace/replace[00m$ exit
+exit
+
+Script done on 2019-04-01 23:19:34-07:00

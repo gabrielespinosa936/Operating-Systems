@@ -1,3 +1,10 @@
+/*
+ * Gabriel Espinosa
+ * Lab/Task: Lab 09
+ * April 1, 2019
+ */
+
+
 /**
  * This implements the LRU page-replacement algorithm.
  */
@@ -8,12 +15,16 @@ FRAME *pageTableTop;
 int pageTableSize = 0;
 FRAME *leastRecentlyUsed;
 
-int numOfFrames = 0;
+int *referenceString;
+int referenceStringLength;
+
+int numberOfFrames = 0;
 
 // statistics
 int numOfFaults = 0;
 
 int hitIndex;
+
 
 /*
  * insert pages from a reference string into a page table and measure
@@ -22,6 +33,14 @@ int hitIndex;
 int testLRU(int numOfFrames, int *refString, int refStrLen)
 {
     // TODO: implement
+    pageTableTop = malloc(sizeof(numOfFrames));
+    referenceString = refString;
+    referenceStringLength = refStrLen;
+    numberOfFrames = numOfFrames;
+    for(int i = 0; i < numOfFrames;i++)
+    {
+
+    }
 
     return 0;
 }
@@ -34,6 +53,7 @@ void insertLRU(int pageNumber)
     // TODO: implement.
 
    FRAME *searchVal = searchLRU(pageNumber);
+   pageTableTop = searchVal->pageNumber;
    
 
 }
@@ -47,6 +67,12 @@ FRAME *searchLRU(int pageNumber)
 {
     // TODO: implement
 
+    FRAME *frameLists;
+    while(frameLists!=NULL)
+    {
+        if(frameLists->pageNumber == pageNumber)
+            return frameLists;
+    }
 
     return NULL;
 }
@@ -59,5 +85,6 @@ void displayLRU()
 void freePageTableLRU()
 {
     // TODO: implement
+    free(pageTableTop);
 }
 

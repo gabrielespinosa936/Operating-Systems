@@ -1,0 +1,18 @@
+/snap/clion/67/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/home/gabe/Desktop/Desktop/Operating Systems/simfs/simfs"
+-- The C compiler identification is GNU 8.2.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+CMake Error at /snap/clion/67/bin/cmake/linux/share/cmake-3.13/Modules/FindPackageHandleStandardArgs.cmake:137 (message):
+  Could NOT find FUSE (missing: FUSE_INCLUDE_DIR FUSE_LIBRARIES)
+Call Stack (most recent call first):
+  /snap/clion/67/bin/cmake/linux/share/cmake-3.13/Modules/FindPackageHandleStandardArgs.cmake:378 (_FPHSA_FAILURE_MESSAGE)
+  CMake/FindFUSE.cmake:29 (find_package_handle_standard_args)
+  CMakeLists.txt:13 (find_package)
+
+
+-- Configuring incomplete, errors occurred!
+See also "/home/gabe/Desktop/Desktop/Operating Systems/simfs/simfs/cmake-build-debug/CMakeFiles/CMakeOutput.log".

@@ -197,6 +197,8 @@ SIMFS_ERROR simfsMountFileSystem(char *simfsFileName)
     if (simfsContext == NULL)
         return SIMFS_ALLOC_ERROR;
 
+    memset((void*)simfsContext,(unsigned char)0, sizeof(SIMFS_CONTEXT_TYPE));
+
     simfsVolume = malloc(sizeof(SIMFS_VOLUME));
     if (simfsVolume == NULL)
         return SIMFS_ALLOC_ERROR;
@@ -214,8 +216,8 @@ SIMFS_ERROR simfsMountFileSystem(char *simfsFileName)
     // Root directory belongs in the hierarchy
     // add a function to see if the bit in the bit vector is set
 //
-      SIMFS_DIR_ENT *entry;
-//    memset((void*)simfsHierarchy,(unsigned char)0, sizeof(simfsHierarchy));
+      //SIMFS_DIR_ENT *entry;
+    //memset((void*)simfsHierarchy,(unsigned char)0, sizeof(simfsHierarchy)); REPLACED BY simfsContext
 //
 //    entry = (SIMFS_DIR_ENT*)malloc(sizeof(SIMFS_DIR_ENT));
 //    if(!entry)
@@ -276,25 +278,118 @@ SIMFS_ERROR simfsUmountFileSystem(char *simfsFileName)
 SIMFS_ERROR simfsCreateFile(SIMFS_NAME_TYPE fileName, SIMFS_CONTENT_TYPE type)
 {
     // TODO: implement 1st && 2nd
+    SIMFS_DIR_ENT *entry;
+
+    if(!checkIfUnique(fileName))
+    {
+        return SIMFS_DUPLICATE_ERROR;
+    }
+    entry = malloc(sizeof(SIMFS_DIR_ENT));
 
 
     unsigned long long next = simfsVolume->superblock.attr.nextUniqueIdentifier++;
     //simfsVolume->block[0].type = SIMFS_FOLDER_CONTENT_TYPE;
     // root folder always has "0" as the identifier
-    simfsVolume->block[0].content.fileDescriptor.identifier = simfsVolume->superblock.attr.nextUniqueIdentifier++;
-    simfsVolume->block[0].content.fileDescriptor.type = SIMFS_FOLDER_CONTENT_TYPE;
-    strcpy(simfsVolume->block[0].content.fileDescriptor.name, "/");
-    simfsVolume->block[0].content.fileDescriptor.accessRights = umask(00000);
-    simfsVolume->block[0].content.fileDescriptor.owner = 0; // arbitrarily simulated
-    simfsVolume->block[0].content.fileDescriptor.size = 0;
+
+    unsigned short nextFreeBlock = simfsFindFreeBlock(simfsVolume->bitvector);
+    // turning on bit in the bitvector that represents the next block which the client hopes to consume
+    // with this new file
+    simfsFlipBit(simfsVolume->bitvector, nextFreeBlock);
+
+
+    simfsVolume->block[nextFreeBlock].content.fileDescriptor.identifier = next;
+    simfsVolume->block[nextFreeBlock].content.fileDescriptor.type = type;
+    strncpy(simfsVolume->block[nextFreeBlock].content.fileDescriptor.name,
+            fileName,
+            SIMFS_MAX_NAME_LENGTH);
+    simfsVolume->block[nextFreeBlock].content.fileDescriptor.accessRights = umask(00000);
+    simfsVolume->block[nextFreeBlock].content.fileDescriptor.owner = 0; // arbitrarily simulated
+    simfsVolume->block[nextFreeBlock].content.fileDescriptor.size = 0;
 
     struct timespec time;
     clock_gettime(CLOCK_MONOTONIC, &time);
-    simfsVolume->block[0].content.fileDescriptor.creationTime = time.tv_sec;
-    simfsVolume->block[0].content.fileDescriptor.lastAccessTime = time.tv_sec;
-    simfsVolume->block[0].content.fileDescriptor.lastModificationTime = time.tv_sec;
+    simfsVolume->block[nextFreeBlock].content.fileDescriptor.creationTime = time.tv_sec;
+    simfsVolume->block[nextFreeBlock].content.fileDescriptor.lastAccessTime = time.tv_sec;
+    simfsVolume->block[nextFreeBlock].content.fileDescriptor.lastModificationTime = time.tv_sec;
+
+    /*
+     * What is node reference in the SIMFS_DIR_ENTRY supposed to do.
+     * what value should it take.
+     *
+     * 269 where does this memory get stored where does this in memory get put
+     * is this the same as the buffer memory
+     *
+     * 272 where/what is  this local buffer is it the entry, data block, file discriptor
+     * context?
+     *
+     * 273 do we update context bitvector with the more recent volume bitvector
+     */
+    unsigned long hashIndex = hash(fileName);
+    // check for collision
+    entry->next = NULL;
+    entry->uniqueFileIdentifier = next;
+    entry->globalOpenFileTableIndex = SIMFS_INVALID_OPEN_FILE_TABLE_INDEX;
+    // update variable in the DIR_ENTRY for the specific file that is being created
+    if(simfsContext->directory[hashIndex] == NULL){
+        simfsContext->directory[hashIndex] = entry;
+        //
+    }else {
+        SIMFS_DIR_ENT *temp = simfsContext->directory[hashIndex]; // Head of list
+
+        while(temp->next != NULL) {
+      
+            temp = temp->next;
+        }
+        temp->next = entry; // Updating list to include entry
+    }
+    // copies content from from simfsVolume to simfsContext
+    // updates the bitvector in the context to match
+    // the volume
+    memcpy(simfsContext->bitvector,
+            simfsVolume->bitvector,
+            sizeof(unsigned char)* (SIMFS_NUMBER_OF_BLOCKS/8) );
+
+
+// check content types
+// check dups
+// find hash index of file name
+// make SIMFS_DIR_ENT
+// check if gloabal directory is null with new hash index from step 3
+// if its null we add an element to g+++loabal directory
+//else check all elemenets to make sure they are not in the same directory
+//
+
+
 
     return SIMFS_NO_ERROR;
+}
+
+
+// This is my function to check if there are any duplicates
+int checkIfUnique(SIMFS_NAME_TYPE fileName)
+{
+    unsigned long hashIndex = hash(fileName);
+
+    // check for collision
+    if(simfsContext->directory[hashIndex] != NULL){
+
+        SIMFS_DIR_ENT *temp = simfsContext->directory[hashIndex]; // Head of list
+
+        while(temp->next != NULL) {
+            // compare temp file name & entry file name if they're
+            // the same return false if they are the same
+            int compare = strncmp(simfsVolume->block[temp->uniqueFileIdentifier].content.fileDescriptor.name,
+                                  fileName,
+                                  SIMFS_MAX_NAME_LENGTH);
+
+            if(compare == 0) {
+                return 0;
+            }
+            temp = temp->next;
+        }
+    }
+
+    return 1;
 }
 
 //////////////////////////////////////////////////////////////////////////

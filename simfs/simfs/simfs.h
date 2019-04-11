@@ -47,8 +47,8 @@
 //////////////////////////////////////////////////////////////////////////
 
 typedef enum {
-    SIMFS_FOLDER_CONTENT_TYPE,
-    SIMFS_FILE_CONTENT_TYPE,
+    SIMFS_FOLDER_CONTENT_TYPE, // If a file is not the same as its data if so then what is the difference
+    SIMFS_FILE_CONTENT_TYPE, // between a block of data and a block of file
     SIMFS_INDEX_CONTENT_TYPE,
     SIMFS_DATA_CONTENT_TYPE,
     SIMFS_INVALID_CONTENT_TYPE
@@ -267,5 +267,8 @@ void simfsFlipBit(unsigned char *bitvector, unsigned short bitIndex);
 void simfsSetBit(unsigned char *bitvector, unsigned short bitIndex);
 void simfsClearBit(unsigned char *bitvector, unsigned short bitIndex);
 unsigned short simfsFindFreeBlock(unsigned char *bitvector);
+
+// this is my function to check for duplicates
+int checkIfUnique(SIMFS_NAME_TYPE fileName);
 
 #endif
